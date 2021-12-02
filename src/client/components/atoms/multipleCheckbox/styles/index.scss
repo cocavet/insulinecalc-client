@@ -1,0 +1,90 @@
+.multipleCheckbox{
+   margin-bottom: 20px;
+
+   &.--disabled{
+      pointer-events: none;
+      
+      .multipleCheckbox__label {
+         color: getColor(grey);
+      }
+
+      .multipleCheckbox__text{
+         color: getColor(grey);
+      }
+
+      .multipleCheckbox__icon{ 
+         background: getColor(border);
+      }
+   }
+
+   & > span{
+      margin-bottom: 10px;
+      display: inline-block;
+   }
+
+   @media #{getMediaQuery(s)}{
+      & > span {
+         margin-bottom: 12px;
+      }
+   }
+
+   &__label{
+      @extend %label;
+      
+      margin-bottom: 10px;
+   }
+
+   &__input{
+      display: none;
+
+      &:checked + .multipleCheckbox__inputLabel .multipleCheckbox__icon{
+         background-color: getColor(primary);
+         border: solid 1px getColor(primary);
+      }
+   }
+
+   &__inputLabel {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+         .multipleCheckbox__icon{
+            background-color: getColor(border);
+         }
+      }
+
+      &.--checked{
+         .multipleCheckbox__icon{
+            background-color: getColor(primary);
+            border: solid 2px getColor(primary);
+            color: getColor(white);
+         }
+      }
+   }
+
+   &__icon{
+      border: solid 2px getColor(border);
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      position: relative;
+      border-radius: 4px;
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: getColor(white);
+      font-weight: 600;
+
+      &:before{
+         top: 1px;
+      }
+   }
+
+   &__text{
+      display: inline;
+      font-size: 15px;
+      margin: 0 20px 0 7px;
+   }
+}

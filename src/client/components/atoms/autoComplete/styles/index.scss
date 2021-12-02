@@ -1,0 +1,46 @@
+.autoComplete {
+   position: relative;
+
+   &__input {
+      @extend %input;
+
+      &:focus + ul{
+         display: block;
+      }
+   }
+
+   &__ul {
+      display: none;
+      position: absolute;
+      top: 21px;
+      max-height: 200px;
+      overflow: auto;
+      background: getColor(white);
+      box-shadow: getGeneric(box-shadow);
+      padding: 0;
+      width: 100%;
+      z-index: 1;
+      border-radius: 0 0 4px 4px;
+   }
+
+   &__li { 
+      padding: 10px;
+      font-size: 14px;
+
+      &:hover,
+      &.--active {
+         background: getColor(border);
+      }
+   }
+
+   &__spinner {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   &__spinnerIcon {
+      color: getColor(primary);
+   }
+}

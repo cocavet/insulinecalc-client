@@ -1,0 +1,19 @@
+.deviceInfo{
+   position: fixed;
+   width: calc(100% - 64px);
+   height: calc(100% - 60px);
+   right: 0;
+   bottom: 0;
+   background: getColor(white);
+   z-index: 10;
+   transform: translateX(100%);
+   animation-name: showDeviceInfo;
+   animation-duration: 0.45s;
+   animation-fill-mode: forwards;
+   
+   @import '../containers/basicInfo/styles/index';
+   @import '../containers/navInfo/styles/index';
+   @import '../containers/routes/styles/index';
+   @import '../containers/warnings/styles/index';
+   @import '../containers/kms/styles/index';
+}

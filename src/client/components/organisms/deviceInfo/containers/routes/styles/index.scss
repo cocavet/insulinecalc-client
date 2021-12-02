@@ -1,0 +1,74 @@
+.routes{
+    position: fixed;
+    width: calc(100% - 110px);
+    height: calc(100% - 170px);
+    bottom: 30px;
+    right: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &__map{
+        width: 100%;
+        height: 100%;
+
+        .mapboxgl-ctrl-logo{ display: none; }
+        .mapboxgl-ctrl-attrib-inner{ display: none; }
+        .mapboxgl-canvas:focus { 
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__buttonCalendar {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+
+        .iconButton__icon{
+            margin-right: 10px;
+        }
+    }
+
+    &__datePicker{
+        position: absolute;
+        z-index: 10;
+        right: 10px;
+        top: 54px;
+    }
+
+    .pointMarker{
+        background: getColor(white);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: solid 1px getColor(primary);
+    }
+
+    .startMarker{
+        width: 42px;
+        height: 42px;
+        background-size: 100% !important;
+        background: no-repeat;
+        border-radius: 50%;
+        border: solid 2px getColor(white);
+        cursor: pointer;
+        background: url('/images/startFinish/start.svg');
+        background-color: getColor(white);
+    }
+
+    .endMarker{
+        width: 42px;
+        height: 42px;
+        background-size: 100% !important;
+        background: no-repeat;
+        border-radius: 50%;
+        border: solid 2px getColor(white);
+        cursor: pointer;
+        background: url('/images/startFinish/finish.svg');
+        background-color: getColor(white);
+    }
+}

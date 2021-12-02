@@ -1,0 +1,15 @@
+.textArea {
+    @extend %input;
+
+    min-height: 100px;
+    resize: vertical;
+    line-height: 24px;
+    width: 100%;
+    font-family: 'Rubik';
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.textArea__label{
+    @extend %label;
+}

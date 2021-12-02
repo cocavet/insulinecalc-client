@@ -1,0 +1,42 @@
+.snackBar{
+    position: fixed;
+    display: flex;
+    bottom: 20px;
+    left: 20px;
+    z-index: 11;
+    color: getColor(black);
+    font-size: getFontSize(text);
+    padding: 10px 15px;
+    background: getColor(white);
+    align-items: center;
+    border-radius: 10px;
+    border: solid 1px grey;
+    transform: translateY(calc(100% + 20px));
+    z-index: 10000;
+
+
+    &.--active{
+        opacity: 1;
+        animation-name: anime;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+
+    &.--success{
+        border: solid 1px getColor(success);
+    }
+
+    &.--error{
+        border: solid 1px getColor(error);
+    }
+}
+
+@-webkit-keyframes anime {
+    from {transform: translateY(100%);}
+    to {transform: translateY(0)}
+}
+
+@keyframes anime {
+    from {transform: translateY(100%);}
+    to {transform: translateY(0)}
+}

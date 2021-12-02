@@ -1,0 +1,82 @@
+.radioButton {
+   margin-bottom: 20px;
+
+   & >  span{
+      display: inline-block;
+   }
+
+   &.--disabled{
+      pointer-events: none;
+      
+      .radioButton__label {
+         color: getColor(grey);
+      }
+
+      .radioButton__text{
+         color: getColor(grey);
+      }
+
+      .radioButton__icon{ 
+         background: getColor(border) !important;
+         border: solid 1px getColor(border) !important;
+      }
+   }
+
+   &__label {
+      @extend %label;
+
+      margin-bottom: 10px;
+   }
+
+   &__input{
+      display: none;
+
+      &:checked + .radioButton__inputLabel .radioButton__icon {
+         background: getColor(primary);
+         border: solid 2px getColor(primary);
+         color: getColor(white);
+      }
+   }
+
+   &__inputLabel {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+         .radioButton__icon{
+            background-color: getColor(border);
+         }
+      }
+   }
+
+   &__icon{
+      border: solid 2px getColor(border);
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      position: relative;
+      border-radius: 50%;
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: getColor(white);
+      font-weight: 600;
+      
+
+      &:before{
+         content: '';
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         background: getColor(white);
+      }
+   }
+
+   &__text{
+      display: inline;
+      font-size: 15px;
+      margin: 0 20px 0 7px;
+   }
+}

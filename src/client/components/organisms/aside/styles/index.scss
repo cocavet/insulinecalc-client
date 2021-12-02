@@ -1,0 +1,99 @@
+.aside{
+    width: 64px;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    padding: 0;
+    top: 0;
+    border-right: solid 1px getColor(border);
+    z-index: 100;
+
+    &.--lowLayer{
+        z-index: -1;
+    }
+
+
+    &__logo{
+        width: 38px;
+        height: 38px;
+        background: url(/images/logoShort.svg);
+        background-repeat: no-repeat;
+        position: relative;
+        display: block;
+        background-size: 38px;
+        top: 11px;
+        left: 13px;
+    }
+
+    &__ul{
+        margin: 50px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    &__li{ 
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+
+        &.--active{
+            .aside__icon{
+                background: getColor(backgroundMain);
+                color: getColor(primary);
+            }
+        }
+
+        &:hover{
+            .aside__href{
+                display: block;
+            }
+        }
+    }
+
+    &__href{
+        display: none;
+        position: absolute;
+        left: 51px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        background: getColor(black);
+        color: getColor(white);
+        transform: translateX(10px);
+        opacity: 0;
+        animation-name: showAsideTooltip;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+        animation-delay: .15s;
+
+        &::before{
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid getColor(black);
+            left: -7px;
+            position: absolute;
+            top: 7px;
+        }
+    }
+
+    &__icon{
+        font-size: 18px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover{
+            background: getColor(backgroundMain);
+        }
+    }
+}
