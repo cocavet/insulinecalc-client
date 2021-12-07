@@ -1,3 +1,4 @@
 export const ROUTERS = {
-    MAIN: '/'
+    MAIN: '/',
+    CALC_INSULINE: '/calcInsuline'
 }

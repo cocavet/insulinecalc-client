@@ -29,6 +29,7 @@ module.exports = {
                     }
                 }
             },
+
             {
                 test: /\.scss$/,
                 use: [{
@@ -36,14 +37,17 @@ module.exports = {
                     }, {
                         loader: 'file-loader',
                         options: {
-                            name: 'css/[name].css',
+                            name: 'css/[name].css'
                         }
                     },
                     {
                         loader: 'extract-loader'
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                        options: {
+                            url: false,
+                        },
                     },
                     {
                         loader: 'postcss-loader'

@@ -1,0 +1,13 @@
+.iconButton{
+    @extend %button;
+
+    border: solid 1px getColor(border);
+
+    &__icon{
+        margin-right: 4px;
+    }
+
+    &__text{
+        margin: 0;
+    }
+}

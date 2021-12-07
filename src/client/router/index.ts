@@ -4,8 +4,8 @@ import { CONSTANTS } from '../constants';
 
 Vue.use(VueRouter);
 
-import Hello from '../components/templates/hello/index.vue';
-
+import GenerateUser from '../pages/generateUser/index.vue';
+import CalcInsuline from '../pages/calcInsuline/index.vue';
 
 export default new VueRouter({
     mode: 'history',
@@ -13,8 +13,13 @@ export default new VueRouter({
         {
             path: CONSTANTS.ROUTERS.MAIN,
             name: 'main',
-            component: Hello
+            component: GenerateUser
         },
-        { path: '*', component: Hello },
+        {
+            path: CONSTANTS.ROUTERS.CALC_INSULINE,
+            name: 'calcInsuline',
+            component: CalcInsuline
+        },
+        { path: '*', component: GenerateUser },
     ]
 });
