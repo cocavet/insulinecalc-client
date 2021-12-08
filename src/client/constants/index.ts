@@ -1,5 +1,6 @@
-import { ROUTERS } from "./router";
+import { ROUTERS } from './router';
 
 export const CONSTANTS = {
-    ROUTERS
+    ROUTERS,
+    INSULINE_URL: 'http://localhost:4321',
 }

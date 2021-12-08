@@ -1,1 +1,3 @@
-export async function mounted() {}
+export async function mounted() {
+    this.simulateMeals();
+}

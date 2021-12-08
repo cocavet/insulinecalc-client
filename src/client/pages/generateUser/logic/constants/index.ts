@@ -1,53 +1,55 @@
+import { ActivityENU, GenderENU, NumMealsENU } from '../../../../contracts/user/user';
+
 export const RADIO_OPTIONS = [
     {
         text: 'Female',
-        value: 1
+        value: GenderENU.female,
     },
     {
         text: 'Male',
-        value: 0
-    }
+        value: GenderENU.male,
+    },
 ];
 
 export const ACTIVITY_OPTIONS = [
     {
         text: 'Sedentary',
-        value: 1.2
+        value: ActivityENU.sedentary,
     },
     {
         text: 'Low (1-2 times x week)',
-        value: 1.375
+        value: ActivityENU.low,
     },
     {
         text: 'Moderate (3 times x week)',
-        value: 1.550
+        value: ActivityENU.moderate,
     },
     {
         text: 'High (4-5 times x week)',
-        value: 1.725
+        value: ActivityENU.high,
     },
     {
         text: 'Very high (+5 times x week)',
-        value: 1.9
-    }
+        value: ActivityENU.veryHigh,
+    },
 ];
 
 export const NUM_MEALS_OPTIONS = [
     {
         text: '3 meals',
-        value: 0
+        value: NumMealsENU.meals3,
     },
     {
         text: '5 meals',
-        value: 1
-    }
+        value: NumMealsENU.meals5,
+    },
 ];
 
 export const user = {
-    gender: 1,
+    gender: GenderENU.female,
     age: '',
     height: '',
     weight: '',
-    activity: 1.55,
-    numMeals: 3
+    activity: ActivityENU.sedentary,
+    numMeals: NumMealsENU.meals3,
 }

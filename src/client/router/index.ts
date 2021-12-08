@@ -13,13 +13,13 @@ export default new VueRouter({
         {
             path: CONSTANTS.ROUTERS.MAIN,
             name: 'main',
-            component: GenerateUser
+            component: GenerateUser,
         },
         {
             path: CONSTANTS.ROUTERS.CALC_INSULINE,
             name: 'calcInsuline',
-            component: CalcInsuline
+            component: CalcInsuline,
         },
-        { path: '*', component: GenerateUser },
-    ]
+        { path: '*', component: CalcInsuline },
+    ],
 });

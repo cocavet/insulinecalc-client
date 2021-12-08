@@ -1,20 +1,22 @@
-import { CONSTANTS } from "../../../../constants";
-import { goTo } from "../../../../utils/common";
-import { setStorage } from "../../../../utils/storage";
+import { CONSTANTS } from '../../../../constants';
+import { getDailyNutritionalSE } from '../../../../services/insulineCalc';
+import { goTo } from '../../../../utils/common';
+import { setStorage } from '../../../../utils/storage';
 
 export const functions = {
     generateUser,
     updateContent,
-    goToCalcInsuline
+    goToCalcInsuline,
 }
 
 function updateContent(content, val) {
     this.user[content] = Number(val);
 }
 
-function generateUser() {
+async function generateUser() {
     this.generateUserLoading = true;
-    setStorage('user', this.user);
+    const dailyNutritional = await getDailyNutritionalSE(this.user);
+    setStorage('user', { user: this.user, dailyNutritional });
     this.goToCalcInsuline();
     this.generateUserLoading = false;
 }
