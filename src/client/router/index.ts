@@ -11,8 +11,8 @@ export default new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: CONSTANTS.ROUTERS.MAIN,
-            name: 'main',
+            path: CONSTANTS.ROUTERS.GENERATE_USER,
+            name: 'genUser',
             component: GenerateUser,
         },
         {

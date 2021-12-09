@@ -2,6 +2,7 @@
   <div>
     <section class="calcInsuline">
     <aside>
+      <Button text="Edit user" @clicked="editUser"/>
       <h2>User</h2>
       <h3>Features</h3>
       <ul>
@@ -14,19 +15,23 @@
       </ul>
       <h3>Daily nutritional</h3>
       <ul>
-        <li>{{dailyNutritional.Kcal}} kcal</li>
-        <li>{{dailyNutritional.CHO}} CHO</li>
-        <li>{{dailyNutritional.Fats}} fats</li>
-        <li>{{dailyNutritional.Proteins}} Proteins</li>
+        <li>{{(dailyNutritional.Kcal).toFixed(2)}} kcal</li>
+        <li>{{(dailyNutritional.CHO).toFixed(2)}} g. of CHO</li>
+        <li>{{(dailyNutritional.Fats).toFixed(2)}} g. of fats</li>
+        <li>{{(dailyNutritional.Proteins).toFixed(2)}} g. of Proteins</li>
       </ul>
     </aside>
 
     <main>
-      <ul>
-        <li v-for="(meal, index) in simulatedMeals" :key="`simulatedMeals__${index}`">
-          
-        </li>
-      </ul>
+      <div class="simulatedMeals">
+         <h2>Simulate meals</h2>
+        <Button text="Simulate meals" @clicked="simulateMeals"/>
+        <ul>
+          <li v-for="(meal, index) in simulatedMeals" :key="`simulatedMeals__${index}`">
+            {{meal}}
+          </li>
+        </ul>
+      </div>
     </main>
     
     </section>
