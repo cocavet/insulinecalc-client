@@ -32,6 +32,10 @@
           </li>
         </ul>
       </div>
+      <div class="trainModel" v-if="activeTraining">
+        <h2>Train Model</h2>
+        <Button text="Simulate meals" @clicked="trainModel"/>
+      </div>
     </main>
     
     </section>
