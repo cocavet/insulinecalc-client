@@ -20,19 +20,28 @@ export async function getPlanSE(user) {
     return response.data;
 }
 
-export async function getModelSE(simulatedMeals, insulineDoses) {
+export async function getModelSE(simulatedMeals, insulineDoses, userId) {
     const response = await requestSE().post({
         url: `${CONSTANTS.INSULINE_URL}/get/model`,
-        data: { simulatedMeals, insulineDoses },
+        data: { simulatedMeals, insulineDoses, userId },
     })
 
     return response.data;
 }
 
-export async function getPreictionSE(simulatedMeals, insulineDoses) {
+export async function getPreictionSE(data, userId) {
     const response = await requestSE().post({
         url: `${CONSTANTS.INSULINE_URL}/get/prediction`,
-        data: { simulatedMeals, insulineDoses },
+        data: { data, userId },
+    })
+
+    return response.data;
+}
+
+export async function getMealSE(user, mealType) {
+    const response = await requestSE().post({
+        url: `${CONSTANTS.INSULINE_URL}/get/meal/''/${mealType}`,
+        data: { user },
     })
 
     return response.data;

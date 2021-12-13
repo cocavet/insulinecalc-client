@@ -1,4 +1,4 @@
-import { ActivityENU, GenderENU, NumMealsENU } from '../../../../contracts/user/user';
+import { ActivityENU, GenderENU, NumMealsENU } from '../../../../contracts/user';
 
 export const RADIO_OPTIONS = [
     {

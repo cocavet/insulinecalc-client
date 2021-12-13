@@ -1,6 +1,6 @@
 import { CONSTANTS } from '../../../../constants';
 import { getDailyNutritionalSE } from '../../../../services/insulineCalc';
-import { goTo } from '../../../../utils/common';
+import { getUniqId, goTo } from '../../../../utils/common';
 import { setStorage } from '../../../../utils/storage';
 
 export const functions = {
@@ -16,7 +16,7 @@ function updateContent(content, val) {
 async function generateUser() {
     this.generateUserLoading = true;
     const dailyNutritional = await getDailyNutritionalSE(this.user);
-    setStorage('user', { user: this.user, dailyNutritional });
+    setStorage('user', { user: this.user, dailyNutritional, userId: getUniqId() });
     this.goToCalcInsuline();
     this.generateUserLoading = false;
 }

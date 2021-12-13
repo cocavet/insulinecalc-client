@@ -34,10 +34,24 @@
       </div>
       <div class="trainModel" v-if="activeTraining">
         <h2>Train Model</h2>
-        <Button text="Simulate meals" @clicked="trainModel"/>
+        <Button text="Train Model" @clicked="trainModel"/>
       </div>
+      <div v-else-if="!activeTraining && trainingFinished">
+        <h2>Trained</h2>
+      </div>
+
+      <div class="predict" v-if="trainingFinished">
+        <Input label="Meal" @updateValue="updateMeal('name', $event)"/>
+        <Select label="Meal type" :options="mealTypeOptions" @updateValue="updateMeal('mealType', $event)"/>
+        <Input label="Weight (kg)" @updateValue="updateContent('weight', $event)" :value="user.weight"/>
+        <Input label="Sport (min.)" @updateValue="updateContent('sport', $event)"/>
+        <Input label="Stress (median beats x minute)" @updateValue="updateContent('stress', $event)"/>
+        <Input label="Sugar Blood" @updateValue="updateContent('bloodGlucose', $event)"/>
+        <Button text="Predict insuline" @clicked="predict"/>
+      </div>
+      <h1>Insuline Dose {{predictedInsulineDose}}</h1>
     </main>
-    
+
     </section>
   </div>
 </template>

@@ -15,3 +15,4 @@ export const NumMealsENU = {
     meals3: 3,
     meals5: 5,
 }
+

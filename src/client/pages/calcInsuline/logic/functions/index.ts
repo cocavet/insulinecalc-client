@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import { CONSTANTS } from '../../../../constants';
-import { ActivityENU, GenderENU } from '../../../../contracts/user/user'
-import { getModelSE, getPlanSE } from '../../../../services/insulineCalc';
+import { ActivityENU, GenderENU } from '../../../../contracts/user'
+import { getMealSE, getModelSE, getPlanSE, getPreictionSE } from '../../../../services/insulineCalc';
 import { getUniqId, goTo } from '../../../../utils/common';
+import { setStorage } from '../../../../utils/storage';
 
 const NUM_OF_SIMULATED_MEALS = 10;
 
@@ -12,6 +13,9 @@ export const functions = {
     simulateMeals,
     editUser,
     trainModel,
+    predict,
+    updateContent,
+    updateMeal,
 }
 
 function getActivity() {
@@ -28,10 +32,11 @@ function editUser() {
 
 async function simulateMeals() {
     for (let i = 0; i < NUM_OF_SIMULATED_MEALS; i++) {
-        const plan = await getPlanSE({
-            ...this.user, sport: _.random(0, 75), stress: _.random(55, 220 - this.user.age),
-            bloodGlucose: _.random(120, 350),
-        });
+        this.user.sport = _.random(0, 75);
+        this.user.stress = _.random(55, 220 - this.user.age);
+        this.user.bloodGlucose = _.random(120, 350);
+
+        const plan = await getPlanSE(this.user);
 
         plan?.plan.forEach(el => {
             if (el) {
@@ -47,16 +52,54 @@ async function simulateMeals() {
                     ]
                 );
 
+                this.modelSimulatedMeals.push(
+                    [
+                        ...Object.values(this.user),
+                        el.Kcal,
+                        el.Proteins,
+                        el.Fats,
+                        el.CHO,
+                        el.totalWeight,
+                    ]
+                )
                 this.insulineDoses.push([el.insulineDose])
             }
         });
     }
 
+    setStorage('simulatedMeals', this.simulatedMeals);
+    setStorage('modelSimulatedMeals', this.modelSimulatedMeals);
+    setStorage('insulineDoses', this.insulineDoses);
+
     this.activeTraining = true;
 }
 
-function trainModel() {
-    this.model = getModelSE(this.simulatedMeals, this.insulineDoses);
+async function trainModel() {
+    this.model = await getModelSE(this.modelSimulatedMeals, this.insulineDoses, this.userId);
 
-    console.log(this.model);
+    this.activeTraining = false;
+    this.trainingFinished = true;
+    setStorage('haveModel', true);
+}
+
+async function predict() {
+    const meal = await getMealSE(this.user, this.currentMeal.mealType);
+    const prediction = await getPreictionSE([
+        ...Object.values(this.user),
+        meal.Kcal,
+        meal.Proteins,
+        meal.Fats,
+        meal.CHO,
+        meal.totalWeight,
+    ], this.userId);
+
+    this.predictedInsulineDose = Number(prediction).toFixed(2);
+}
+
+function updateContent(content, val) {
+    this.user[content] = Number(val);
+}
+
+function updateMeal(content, val) {
+    this.currentMeal[content] = val;
 }
