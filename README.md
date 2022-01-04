@@ -1,4 +1,4 @@
-# INSULINE CALC
+# INSULINE CALC - client
 ## Install dependencies
 To install the dependencies, open your terminal and run
     
