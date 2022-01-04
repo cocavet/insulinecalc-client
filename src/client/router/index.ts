@@ -20,6 +20,6 @@ export default new VueRouter({
             name: 'calcInsuline',
             component: CalcInsuline,
         },
-        { path: '*', component: CalcInsuline },
+        { path: '*', component: GenerateUser },
     ],
 });
