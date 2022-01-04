@@ -1,6 +1,9 @@
 import { getStorage } from '../../../../utils/storage';
 
 export async function mounted() {
+    this.user = getStorage('user').user,
+    this.dailyNutritional = getStorage('user').dailyNutritional,
+    this.userId = getStorage('user').userId,
     this.simulatedMeals = getStorage('simulatedMeals') ? getStorage('simulatedMeals') : [];
     this.modelSimulatedMeals = getStorage('modelSimulatedMeals') ? getStorage('modelSimulatedMeals') : [];
     this.insulineDoses = getStorage('insulineDoses') ? getStorage('insulineDoses') : [];

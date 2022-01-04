@@ -6,8 +6,9 @@ export function setStorage(item, value, stringify = true) {
 
 export function getStorage(item, parse = true) {
     return parse
-        ? JSON.parse(localStorage.getItem(item))
-        : localStorage.getItem(item);
+        ? JSON.parse(localStorage.getItem(item)) || []
+        : localStorage.getItem(item) || [];
+
 }
 
 export function deleteStorage(item) {

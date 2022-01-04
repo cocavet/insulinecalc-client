@@ -1,5 +1,4 @@
 import { MealTypeENU } from '../../../../contracts/meal';
-import { getDistributionMeal } from '../../../../utils/common';
 import { getStorage } from '../../../../utils/storage';
 import { mealTypeOptions } from '../constants';
 
@@ -22,6 +21,7 @@ export const data = {
     model: null,
     storedMeals: getStorage('storedMeals'),
     predictedInsulineDose: null,
+    loading: false,
 }
 
 export const props = [];

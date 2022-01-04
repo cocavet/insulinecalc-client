@@ -172,6 +172,14 @@
       padding: 15px 12px;
       font-size: 17px !important; } }
 
+.calcInsuline__aside, .calcInsuline__main, .user__content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 20px;
+  overflow: auto;
+  min-width: 400px; }
+
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased; }
@@ -193,7 +201,7 @@ html {
   font-size: 17px;
   color: #25125E;
   cursor: default !important;
-  background: #fff; }
+  background: #f8f9fb; }
 
 p {
   margin: 0; }
@@ -209,7 +217,7 @@ h1 {
 
 h2 {
   font-size: 25px;
-  margin: 0; }
+  margin: 0 0 20px; }
 
 h3 {
   font-size: 17px;
@@ -560,3 +568,45 @@ code {
     border-bottom: 5px solid #25125E;
     top: -5px;
     left: 15px; }
+
+.calcInsuline {
+  display: flex;
+  max-width: 980px;
+  justify-content: center; }
+  .calcInsuline__aside {
+    min-width: 250px !important;
+    position: relative; }
+    .calcInsuline__aside button {
+      position: absolute;
+      right: 30px;
+      top: 30px; }
+  .calcInsuline__main {
+    display: flex;
+    flex-direction: column;
+    width: 100%; }
+    .calcInsuline__main h2 > span {
+      color: #32cc77;
+      font-size: 17px;
+      margin-left: 10px;
+      position: relative;
+      top: -2px; }
+  .calcInsuline__calc {
+    background: #32cc77;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: flex-end; }
+    .calcInsuline__calc h1 {
+      margin: 0; }
+
+.user {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center; }

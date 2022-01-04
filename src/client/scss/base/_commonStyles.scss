@@ -15,7 +15,7 @@ html {
     font-size: getFontSize(text);
     color: getColor(black);
     cursor: default !important;
-    background: getColor(white);
+    background: getColor(backgroundMain);
 }
 
 p {
@@ -36,7 +36,7 @@ h1 {
 
 h2 {
     font-size: getFontSize(h2);
-    margin: 0;
+    margin: 0 0 20px;
 }
 
 h3 {

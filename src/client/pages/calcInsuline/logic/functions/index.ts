@@ -31,6 +31,7 @@ function editUser() {
 }
 
 async function simulateMeals() {
+    this.loading = true;
     for (let i = 0; i < NUM_OF_SIMULATED_MEALS; i++) {
         this.user.sport = _.random(0, 75);
         this.user.stress = _.random(55, 220 - this.user.age);
@@ -72,6 +73,7 @@ async function simulateMeals() {
     setStorage('insulineDoses', this.insulineDoses);
 
     this.activeTraining = true;
+    this.loading = false;
 }
 
 async function trainModel() {
@@ -93,7 +95,7 @@ async function predict() {
         meal.totalWeight,
     ], this.userId);
 
-    this.predictedInsulineDose = Number(prediction).toFixed(2);
+    this.predictedInsulineDose = Number(prediction).toFixed(1);
 }
 
 function updateContent(content, val) {

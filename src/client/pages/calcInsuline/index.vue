@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="calcInsuline">
-    <aside>
+    <div class="calcInsuline__aside">
       <Button text="Edit user" @clicked="editUser"/>
       <h2>User</h2>
       <h3>Features</h3>
@@ -20,36 +20,37 @@
         <li>{{(dailyNutritional.Fats).toFixed(2)}} g. of fats</li>
         <li>{{(dailyNutritional.Proteins).toFixed(2)}} g. of Proteins</li>
       </ul>
-    </aside>
+    </div>
 
-    <main>
+    <main class="calcInsuline__main">
       <div class="simulatedMeals">
-         <h2>Simulate meals</h2>
-        <Button text="Simulate meals" @clicked="simulateMeals"/>
-        <ul>
+        <h2>Simulate meals <span v-if="simulatedMeals.length > 0 && !loading">Done</span></h2>
+        <Button text="Simulate meals" type="--primary" @clicked="simulateMeals" v-if="simulatedMeals.length === 0 && !loading"/>
+        <small v-if="loading">Loading recipes...</small>
+        <ul v-if="loading">
           <li v-for="(meal, index) in simulatedMeals" :key="`simulatedMeals__${index}`">
-            {{meal}}
+            <h3>{{ meal[1] }}</h3>
           </li>
         </ul>
       </div>
-      <div class="trainModel" v-if="activeTraining">
-        <h2>Train Model</h2>
-        <Button text="Train Model" @clicked="trainModel"/>
-      </div>
-      <div v-else-if="!activeTraining && trainingFinished">
-        <h2>Trained</h2>
+      <div class="trainModel"  v-if="simulatedMeals.length > 0 && !loading">
+        <h2>Train Model <span v-if="!activeTraining && trainingFinished">Done</span></h2>
+        <Button  v-if="activeTraining && !trainingFinished" text="Train Model" @clicked="trainModel"/>
       </div>
 
       <div class="predict" v-if="trainingFinished">
+        <h2>New prediction</h2>
         <Input label="Meal" @updateValue="updateMeal('name', $event)"/>
         <Select label="Meal type" :options="mealTypeOptions" @updateValue="updateMeal('mealType', $event)"/>
         <Input label="Weight (kg)" @updateValue="updateContent('weight', $event)" :value="user.weight"/>
         <Input label="Sport (min.)" @updateValue="updateContent('sport', $event)"/>
         <Input label="Stress (median beats x minute)" @updateValue="updateContent('stress', $event)"/>
         <Input label="Sugar Blood" @updateValue="updateContent('bloodGlucose', $event)"/>
-        <Button text="Predict insuline" @clicked="predict"/>
+        <Button text="Predict insuline" type="--primary" @clicked="predict"/>
       </div>
-      <h1>Insuline Dose {{predictedInsulineDose}}</h1>
+      <div v-if="predictedInsulineDose" class="calcInsuline__calc">
+          <h1>{{predictedInsulineDose}} Units</h1>
+      </div>
     </main>
 
     </section>
@@ -57,7 +58,7 @@
 </template>
 
 <script>
-import './styles/calcInsuline.scss';
+
 import { components } from './logic/components'
 import { functions } from "./logic/functions";
 import { watchers } from "./logic/watchers";
