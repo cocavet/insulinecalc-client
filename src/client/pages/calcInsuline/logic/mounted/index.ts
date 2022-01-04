@@ -13,4 +13,8 @@ export async function mounted() {
         this.activeTraining = false;
         this.trainingFinished = true;
     }
+
+    if(this.simulatedMeals.length === 0) {
+        this.simulateMeals();
+    }
 }

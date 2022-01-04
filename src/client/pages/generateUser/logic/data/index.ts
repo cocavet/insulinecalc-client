@@ -6,6 +6,7 @@ export const data = {
     activity: ACTIVITY_OPTIONS,
     numMeals: NUM_MEALS_OPTIONS,
     user,
+    haveUser: [],
 }
 
 export const props = [];

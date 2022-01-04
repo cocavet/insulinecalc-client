@@ -172,7 +172,7 @@
       padding: 15px 12px;
       font-size: 17px !important; } }
 
-.calcInsuline__aside, .calcInsuline__main, .user__content {
+.user__content {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
@@ -570,37 +570,7 @@ code {
     left: 15px; }
 
 .calcInsuline {
-  display: flex;
-  max-width: 980px;
-  justify-content: center; }
-  .calcInsuline__aside {
-    min-width: 250px !important;
-    position: relative; }
-    .calcInsuline__aside button {
-      position: absolute;
-      right: 30px;
-      top: 30px; }
-  .calcInsuline__main {
-    display: flex;
-    flex-direction: column;
-    width: 100%; }
-    .calcInsuline__main h2 > span {
-      color: #32cc77;
-      font-size: 17px;
-      margin-left: 10px;
-      position: relative;
-      top: -2px; }
-  .calcInsuline__calc {
-    background: #32cc77;
-    color: #fff;
-    border-radius: 10px;
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    justify-content: flex-end; }
-    .calcInsuline__calc h1 {
-      margin: 0; }
+  display: flex; }
 
 .user {
   width: 100%;
@@ -610,13 +580,3 @@ code {
   left: 0;
   display: flex;
   justify-content: center; }
-  .user__btns {
-    display: flex;
-    margin-top: 20px; }
-    .user__btns .button {
-      margin: 0 3px;
-      width: 100%; }
-      .user__btns .button:first-child {
-        margin-left: 0; }
-      .user__btns .button:last-child {
-        margin-right: 0; }

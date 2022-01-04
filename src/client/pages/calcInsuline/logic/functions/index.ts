@@ -74,6 +74,8 @@ async function simulateMeals() {
 
     this.activeTraining = true;
     this.loading = false;
+
+    this.trainModel();
 }
 
 async function trainModel() {
@@ -81,6 +83,7 @@ async function trainModel() {
 
     this.activeTraining = false;
     this.trainingFinished = true;
+
     setStorage('haveModel', true);
 }
 

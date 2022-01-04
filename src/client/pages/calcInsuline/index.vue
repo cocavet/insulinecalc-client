@@ -25,7 +25,6 @@
     <main class="calcInsuline__main">
       <div class="simulatedMeals">
         <h2>Simulate meals <span v-if="simulatedMeals.length > 0 && !loading">Done</span></h2>
-        <Button text="Simulate meals" type="--primary" @clicked="simulateMeals" v-if="simulatedMeals.length === 0 && !loading"/>
         <small v-if="loading">Loading recipes...</small>
         <ul v-if="loading">
           <li v-for="(meal, index) in simulatedMeals" :key="`simulatedMeals__${index}`">
@@ -35,7 +34,6 @@
       </div>
       <div class="trainModel"  v-if="simulatedMeals.length > 0 && !loading">
         <h2>Train Model <span v-if="!activeTraining && trainingFinished">Done</span></h2>
-        <Button  v-if="activeTraining && !trainingFinished" text="Train Model" @clicked="trainModel"/>
       </div>
 
       <div class="predict" v-if="trainingFinished">
